@@ -1,0 +1,28 @@
+        <div id="signup">   
+          <h1>Sign Up for Free</h1>
+          
+          <form action="/" method="post">
+          
+          <div class="top-row">
+            <div class="field-wrap">
+              <input type="text" ng-model="register.firstname" placeholder="First Name*" required autocomplete="off" />
+            </div>
+        
+            <div class="field-wrap">
+              <input type="text" ng-model="register.lastname" placeholder="Last Name*" required autocomplete="off"/>
+            </div>
+          </div>
+
+          <div class="field-wrap">
+            <input type="email" ng-model="register.email" placeholder="Email Address*" required autocomplete="off"/>
+          </div>
+          
+          <div class="field-wrap">
+            <input type="password" ng-model="register.password" placeholder="Set A Password*" required autocomplete="off"/>
+          </div>
+          
+          <button type="button" class="button button-block" ng-click="registerUser()"/>Get Started</button>
+          
+          </form>
+			<h4><a href="#">Already a member? Sign-in ></a></h4>
+        </div>
