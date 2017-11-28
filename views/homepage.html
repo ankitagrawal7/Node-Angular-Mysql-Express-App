@@ -66,8 +66,8 @@
                             <th class="col-lg-1">Sr. No.</th>
                             <th class="col-lg-2">Book Name</th>
                             <th class="col-lg-2">Author</th>
-                            <th class="col-lg-6">Description</th>
-                            <th class="col-lg-1">Action</th>
+                            <th class="col-lg-5">Description</th>
+                            <th class="col-lg-2">Action</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -75,8 +75,15 @@
                             <td>{{$index + 1}}</td>
                             <td>{{book.book_name}}</td>
                             <td>{{book.author}}</td>
-                            <td>{{book.description}}</td>
-                            <td><button class="btn btn-danger" ng-click="deleteBook(book.id)">Delete</button></td>
+                            <td>{{book.description | limitTo : 195}}.....</td>
+                            <td class="row">
+                                <div class="col-lg-12"  style="padding-bottom:2px;">
+                                   <button class="btn btn-info btn-block" ng-click="viewBook(book)">View</button> 
+                                </div>
+                                <div class="col-lg-12">
+                                   <button class="btn btn-danger btn-block" ng-click="deleteBook(book.id)" ng-show="{{user.userid == book.added_by}}">Delete</button>
+                                </div>                               
+                            </td>
                           </tr>
                         </tbody>
                       </table>
@@ -129,6 +136,43 @@
   </div>
 </div>
   
+  
+    <!-- Modal -->
+<div id="viewModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Book Details</h4>
+      </div>
+        <div class="modal-body">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <label for="bookname">Name:</label>
+                  {{selected_book.book_name}}
+                </div>
+                
+                <div class="form-group">
+                  <label for="bookauthor">Author:</label>
+                  {{selected_book.author}}
+                </div>
+                
+                <div class="form-group">
+                  <label for="description">Description:</label>
+                  {{selected_book.description}}
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+
+  </div>
+</div>
+
+
   <script src='js/jquery.js'></script>
   <script src="js/bootstrap.js"></script>
   <script  src="js/controller.js"></script>

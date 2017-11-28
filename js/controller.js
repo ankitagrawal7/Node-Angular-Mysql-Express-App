@@ -58,6 +58,11 @@
 			});
 		};
 		
+		$scope.viewBook = function(book){
+			$('#viewModal').modal('show');
+			$scope.selected_book=book;
+		};
+		
 		$scope.logout = function(){
 			$http.get("/api/logout").success(function(){
 				$window.location.href = "/";
